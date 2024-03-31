@@ -2,8 +2,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="fixed top-0 navbar shadow-sm">
+    <div className="flex items-center justify-center ">
+      <div className="fixed top-0 navbar shadow-sm bg-white ">
         <div className="navbar-start">
           <a className="btn btn-ghost text-xl stat-value">ReactForecast</a>
         </div>

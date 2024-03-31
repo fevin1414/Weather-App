@@ -6,9 +6,10 @@ import {
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Stats = () => {
+const Stats = ({ location }) => {
+  const displayLocation = location ? location : "Winnipeg";
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center z-0">
       <div className="stats shadow flex flex-col items-center lg:flex-row lg:justify-center">
         <div className="stat mb-4 lg:mb-0 lg:mr-4">
           <div className="stat-figure text-secondary">
@@ -19,7 +20,7 @@ const Stats = () => {
             />
           </div>
           <div className="stat-title">Location</div>
-          <div className="stat-value">Winnipeg</div>
+          <div className="stat-value">{displayLocation}</div>
         </div>
 
         <div className="stat mb-4 lg:mb-0 lg:mx-4">

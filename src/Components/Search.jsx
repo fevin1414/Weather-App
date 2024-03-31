@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Search = () => {
+const Search = ({ search }) => {
   return (
     <div className=" flex justify-center items-center p-4">
       <label className="input input-bordered  shadow-sm rounded-lg p-4 flex justify-center items-center gap-2 w-[60%]">
-        <input type="text" className="grow" placeholder="Search" />
+        <input
+          type="text"
+          className="grow"
+          placeholder="Search"
+          onChange={search}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
