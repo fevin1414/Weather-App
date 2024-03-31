@@ -1,6 +1,18 @@
 import React from "react";
+import useTheme from "../context/theme";
 
 const Navbar = () => {
+  const { themeMode, lightTheme, darkTheme } = useTheme();
+
+  const onChangeBtn = (e) => {
+    const darkModeStatus = e.currentTarget.checked;
+    if (darkModeStatus) {
+      darkTheme();
+    } else {
+      lightTheme();
+    }
+  };
+
   return (
     <div className="flex items-center justify-center ">
       <div className="fixed top-0 navbar shadow-sm bg-white ">
@@ -28,6 +40,8 @@ const Navbar = () => {
               type="checkbox"
               value="synthwave"
               className="toggle theme-controller"
+              onChange={onChangeBtn}
+              checked={themeMode === "dark"}
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
