@@ -30,9 +30,9 @@ function App() {
   const [speed, setSpeed] = useState(null);
   const [deg, setDeg] = useState(null);
   const [gust, setGust] = useState(null);
-  const { data } = useWeather({
-    location,
-  });
+  // const { data } = useWeather({
+  //   location,
+  // });
 
   useEffect(() => {
     localStorage.setItem("themeMode", themeMode);
@@ -48,11 +48,11 @@ function App() {
   const lightTheme = () => {
     setThemeMode("light");
   };
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log(data);
+  //   }
+  // }, [data]);
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
       <div>
