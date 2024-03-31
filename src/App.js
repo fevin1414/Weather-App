@@ -6,11 +6,13 @@ import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Card from "./Components/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faTemperatureThreeQuarters,
   faWind,
 } from "@fortawesome/free-solid-svg-icons";
 import { ThemeProvider } from "./context/theme";
+import useWeather from "./hooks/useWeather";
 
 function App() {
   const [themeMode, setThemeMode] = useState(
@@ -18,6 +20,7 @@ function App() {
       ? localStorage.getItem("themeMode")
       : "light"
   );
+
   const [location, setLocation] = useState("Winnipeg");
   const [temp, setTemperature] = useState(null);
   const [minTemp, setMinTemp] = useState(null);
@@ -27,6 +30,9 @@ function App() {
   const [speed, setSpeed] = useState(null);
   const [deg, setDeg] = useState(null);
   const [gust, setGust] = useState(null);
+  const { data } = useWeather({
+    location,
+  });
 
   useEffect(() => {
     localStorage.setItem("themeMode", themeMode);
@@ -42,7 +48,11 @@ function App() {
   const lightTheme = () => {
     setThemeMode("light");
   };
-
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+  }, [data]);
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
       <div>
