@@ -2,10 +2,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import Search from "./Components/Search";
 import Stats from "./Components/Stats";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <div>
+      <div>
+        <Navbar />
+      </div>
       <div className="mt-20">
         <Stats />
       </div>

@@ -8,13 +8,13 @@ import {
 
 const Stats = () => {
   return (
-    <div className="flex items-center justify-center ">
-      <div className="stats shadow">
-        <div className="stat">
+    <div className="flex justify-center">
+      <div className="stats shadow flex flex-col items-center lg:flex-row lg:justify-center">
+        <div className="stat mb-4 lg:mb-0 lg:mr-4">
           <div className="stat-figure text-secondary">
             <FontAwesomeIcon
               icon={faLocationDot}
-              className="w-8 h-8 "
+              className="w-8 h-8"
               style={{ color: "black" }}
             />
           </div>
@@ -22,11 +22,11 @@ const Stats = () => {
           <div className="stat-value">Winnipeg</div>
         </div>
 
-        <div className="stat">
+        <div className="stat mb-4 lg:mb-0 lg:mx-4">
           <div className="stat-figure text-secondary">
             <FontAwesomeIcon
               icon={faClock}
-              className="w-8 h-8 "
+              className="w-8 h-8"
               style={{ color: "black" }}
             />
           </div>
@@ -34,11 +34,11 @@ const Stats = () => {
           <div className="stat-value">Time</div>
         </div>
 
-        <div className="stat">
+        <div className="stat mb-4 lg:mb-0 lg:ml-4">
           <div className="stat-figure text-secondary">
             <FontAwesomeIcon
               icon={faCalendarDay}
-              className="w-8 h-8 "
+              className="w-8 h-8"
               style={{ color: "black" }}
             />
           </div>
