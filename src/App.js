@@ -67,32 +67,26 @@ function App() {
             }}
           />
         </div>
-        <div className="mt-10 flex items-center justify-center z-0">
+        <div className="mt-10  items-center flex flex-col justify-center lg:flex-row lg:items-center lg:gap-x-5 lg:justify-center gap-y-5">
           <Hero />
+          <Card
+            image={
+              <FontAwesomeIcon icon={faTemperatureThreeQuarters} size="5x" />
+            }
+            Value1={`Temperature: ${temp}`}
+            Value2={`Minimum: ${minTemp}`}
+            Value3={`Maximum: ${maxTemp}`}
+            Value4={`pressure: ${pressure}`}
+            Value5={`humidity:${humidity}`}
+          />
+          <Card
+            image={<FontAwesomeIcon icon={faWind} size="5x" />}
+            Value1={`Speed: ${speed}`}
+            Value2={`Degree: ${minTemp}`}
+            Value3={`Gust: ${maxTemp}`}
+          />
         </div>
-        <div className="mt-10 flex flex-wrap justify-center z-0">
-          <div className="mt-10 mr-4 flex items-center justify-center z-0">
-            <Card
-              image={
-                <FontAwesomeIcon icon={faTemperatureThreeQuarters} size="5x" />
-              }
-              Value1={`Temperature: ${temp}`}
-              Value2={`Minimum: ${minTemp}`}
-              Value3={`Maximum: ${maxTemp}`}
-              Value4={`pressure: ${pressure}`}
-              Value5={`humidity:${humidity}`}
-            />
-          </div>
 
-          <div className="mt-10 mr-4 flex items-center justify-center z-0">
-            <Card
-              image={<FontAwesomeIcon icon={faWind} size="5x" />}
-              Value1={`Speed: ${speed}`}
-              Value2={`Degree: ${minTemp}`}
-              Value3={`Gust: ${maxTemp}`}
-            />
-          </div>
-        </div>
         <div className="z-9999">
           <Navbar />
         </div>
