@@ -8,11 +8,12 @@ const Card = ({ Value1, Value2, Value3, Value4, Value5, image }) => {
         style={{ height: "300px" }}
       >
         <div className="flex flex-col items-center pb-10">
-          <img
-            className="w-24 h-24 mb-3 rounded-full shadow-lg"
-            src="/docs/images/people/profile-picture-3.jpg"
-            alt="Bonnie image"
-          />
+          <div
+            className="w-24 h-24 mb-3   flex  items-center justify-center"
+            style={{ color: "black" }}
+          >
+            {image}
+          </div>
           <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
             {Value1}
           </h5>

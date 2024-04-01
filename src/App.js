@@ -6,7 +6,6 @@ import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Card from "./Components/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faTemperatureThreeQuarters,
   faWind,
@@ -30,16 +29,29 @@ function App() {
   const [speed, setSpeed] = useState(null);
   const [deg, setDeg] = useState(null);
   const [gust, setGust] = useState(null);
-  // const { data } = useWeather({
-  //   location,
-  // });
+  const { data } = useWeather({
+    location,
+  });
 
   useEffect(() => {
     localStorage.setItem("themeMode", themeMode);
     const localTheme = localStorage.getItem("themeMode");
-    // add custom data-theme attribute to html tag required to update theme using DaisyUI
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [themeMode]);
+
+  useEffect(() => {
+    if (data) {
+      console.log("data", data);
+      setTemperature(data?.main?.temp);
+      setMinTemp(data?.main?.temp_min);
+      setMaxTemp(data?.main?.temp_max);
+      setPressure(data?.main?.pressure);
+      setHumidity(data?.main?.humidity);
+      setSpeed(data?.wind?.speed);
+      setDeg(data?.wind?.deg);
+      setGust(data?.wind?.gust);
+    }
+  }, [data]);
 
   const darkTheme = () => {
     setThemeMode("dark");
@@ -48,11 +60,7 @@ function App() {
   const lightTheme = () => {
     setThemeMode("light");
   };
-  // useEffect(() => {
-  //   if (data) {
-  //     console.log(data);
-  //   }
-  // }, [data]);
+
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
       <div>
@@ -79,15 +87,13 @@ function App() {
             Value5={`humidity:${humidity}`}
           />
           <Hero />
-
           <Card
             image={<FontAwesomeIcon icon={faWind} size="5x" />}
             Value1={`Speed: ${speed}`}
-            Value2={`Degree: ${minTemp}`}
-            Value3={`Gust: ${maxTemp}`}
+            Value2={`Degree: ${deg}`}
+            Value3={`Gust: ${gust}`}
           />
         </div>
-
         <div className="z-9999">
           <Navbar />
         </div>
