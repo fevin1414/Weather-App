@@ -1,23 +1,41 @@
-const useWeather = async ({ location }) => {
-  const url = `https://open-weather13.p.rapidapi.com/city/${location}`;
+import { useState, useEffect } from "react";
 
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
-      "X-RapidAPI-Host": "open-weather13.p.rapidapi.com",
-    },
-  };
+const useWeather = ({ location }) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    console.log(result);
-    return result;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`;
+
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+          "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+        },
+      };
+
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        setData(result);
+        console.log(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [location]);
+
+  return { data, loading, error };
 };
 
 export default useWeather;

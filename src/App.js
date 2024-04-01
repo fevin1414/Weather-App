@@ -22,7 +22,7 @@ function App() {
 
   const [location, setLocation] = useState("Winnipeg");
   const [temp, setTemperature] = useState(null);
-  const [minTemp, setMinTemp] = useState(null);
+  const [minTemp, setMinTemp] = useState();
   const [maxTemp, setMaxTemp] = useState(null);
   const [pressure, setPressure] = useState(null);
   const [humidity, setHumidity] = useState(null);
@@ -32,7 +32,6 @@ function App() {
   const { data } = useWeather({
     location,
   });
-
   useEffect(() => {
     localStorage.setItem("themeMode", themeMode);
     const localTheme = localStorage.getItem("themeMode");
@@ -41,18 +40,16 @@ function App() {
 
   useEffect(() => {
     if (data) {
-      console.log("data", data);
-      setTemperature(data?.main?.temp);
-      setMinTemp(data?.main?.temp_min);
-      setMaxTemp(data?.main?.temp_max);
-      setPressure(data?.main?.pressure);
-      setHumidity(data?.main?.humidity);
-      setSpeed(data?.wind?.speed);
-      setDeg(data?.wind?.deg);
-      setGust(data?.wind?.gust);
+      setTemperature(data?.current?.temp_c);
+      setMinTemp(data?.current?.temp_c);
+      setMaxTemp(null);
+      setPressure(data?.current?.pressure_mb);
+      setHumidity(data?.current?.humidity);
+      setSpeed(data?.current?.wind_kph);
+      setDeg(data?.current?.wind_degree);
+      setGust(data?.current?.gust_kph);
     }
   }, [data]);
-
   const darkTheme = () => {
     setThemeMode("dark");
   };
