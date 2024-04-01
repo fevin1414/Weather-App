@@ -64,7 +64,7 @@ const Stats = () => {
             <FontAwesomeIcon
               icon={faLocationDot}
               className="w-8 h-8"
-              style={{ color: "black" }}
+              style={{ color: "blue" }}
             />
           </div>
           <div className="stat-title">Location</div>
@@ -76,7 +76,7 @@ const Stats = () => {
             <FontAwesomeIcon
               icon={faClock}
               className="w-8 h-8"
-              style={{ color: "black" }}
+              style={{ color: "blue" }}
             />
           </div>
           <div className="stat-title">{timeZone}</div>
@@ -88,7 +88,7 @@ const Stats = () => {
             <FontAwesomeIcon
               icon={faCalendarDay}
               className="w-8 h-8"
-              style={{ color: "black" }}
+              style={{ color: "blue" }}
             />
           </div>
           <div className="stat-title">Day</div>
