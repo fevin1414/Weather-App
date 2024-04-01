@@ -3,7 +3,10 @@ import React from "react";
 const Hero = () => {
   return (
     <div className=" w-[60%] z-0 flex items-center justify-center">
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div
+        className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        style={{ height: "300px" }}
+      >
         <div className="flex flex-col items-center pb-10">
           <img
             className="w-24 h-24 mb-3 rounded-full shadow-lg"

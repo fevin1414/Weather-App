@@ -68,7 +68,6 @@ function App() {
           />
         </div>
         <div className="mt-10  items-center flex flex-col justify-center lg:flex-row lg:items-center lg:gap-x-5 lg:justify-center gap-y-5">
-          <Hero />
           <Card
             image={
               <FontAwesomeIcon icon={faTemperatureThreeQuarters} size="5x" />
@@ -79,6 +78,8 @@ function App() {
             Value4={`pressure: ${pressure}`}
             Value5={`humidity:${humidity}`}
           />
+          <Hero />
+
           <Card
             image={<FontAwesomeIcon icon={faWind} size="5x" />}
             Value1={`Speed: ${speed}`}
