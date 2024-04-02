@@ -3,7 +3,6 @@ import "./App.css";
 import Search from "./Components/Search";
 import Stats from "./Components/Stats";
 import Navbar from "./Components/Navbar";
-import Hero from "./Components/Hero";
 import Card from "./Components/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ThemeProvider } from "./context/theme";
 import useWeather from "./hooks/useWeather";
+import Hero from "./Components/Hero";
 
 function App() {
   const [themeMode, setThemeMode] = useState(
@@ -29,6 +29,7 @@ function App() {
   const [speed, setSpeed] = useState(null);
   const [deg, setDeg] = useState(null);
   const [gust, setGust] = useState(null);
+  const [image, setImage] = useState(null);
   const { data } = useWeather({
     location,
   });
@@ -40,6 +41,7 @@ function App() {
 
   useEffect(() => {
     if (data) {
+      setImage(`https:${data?.current?.condition?.icon}`);
       setTemperature(data?.current?.temp_c);
       setMinTemp(data?.current?.temp_c);
       setMaxTemp(null);
@@ -83,7 +85,7 @@ function App() {
             Value4={`pressure: ${pressure}`}
             Value5={`humidity:${humidity}`}
           />
-          <Hero />
+          <Hero Image={image} />
           <Card
             image={<FontAwesomeIcon icon={faWind} size="5x" />}
             Value1={`Speed: ${speed}`}

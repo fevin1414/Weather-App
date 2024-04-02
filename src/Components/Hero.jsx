@@ -1,6 +1,6 @@
 import React from "react";
 
-const Hero = () => {
+const Hero = ({ Image }) => {
   return (
     <div className=" w-[60%] z-0 flex items-center justify-center">
       <div
@@ -8,11 +8,7 @@ const Hero = () => {
         style={{ height: "300px" }}
       >
         <div className="flex flex-col items-center pb-10">
-          <img
-            className="w-24 h-24 mb-3 rounded-full shadow-lg"
-            src="/docs/images/people/profile-picture-3.jpg"
-            alt="Bonnie image"
-          />
+          <img className="w-24 h-24 mb-3 " src={Image} alt="Bonnie image" />
           <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
             Bonnie Green
           </h5>
