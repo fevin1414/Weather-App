@@ -24,7 +24,7 @@ const useWeather = ({ location }) => {
         }
         const result = await response.json();
         setData(result);
-        console.log(data);
+
         setLoading(false);
       } catch (err) {
         setError(err);
