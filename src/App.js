@@ -23,13 +23,18 @@ function App() {
   const [location, setLocation] = useState("Winnipeg");
   const [temp, setTemperature] = useState(null);
   const [minTemp, setMinTemp] = useState();
-  const [maxTemp, setMaxTemp] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
   const [pressure, setPressure] = useState(null);
   const [humidity, setHumidity] = useState(null);
   const [speed, setSpeed] = useState(null);
   const [deg, setDeg] = useState(null);
   const [gust, setGust] = useState(null);
   const [image, setImage] = useState(null);
+  const [condition, setCondition] = useState(null);
+  const [country, setCountry] = useState(null);
+  const [region, setRegion] = useState(null);
+  const [localTime, setLocalTime] = useState(null);
+  const [timezone, setTimeZone] = useState(null);
   const { data } = useWeather({
     location,
   });
@@ -42,9 +47,14 @@ function App() {
   useEffect(() => {
     if (data) {
       setImage(`https:${data?.current?.condition?.icon}`);
+      setCondition(data?.current?.condition?.text);
       setTemperature(data?.current?.temp_c);
-      setMinTemp(data?.current?.temp_c);
-      setMaxTemp(null);
+      setMinTemp(data?.current?.feelslike_c);
+      setCountry(data?.location?.country);
+      setLocalTime(data?.location?.localtime);
+      setLastUpdated(data?.current?.last_updated);
+      setRegion(data?.location?.region);
+      setTimeZone(data?.location?.tz_id);
       setPressure(data?.current?.pressure_mb);
       setHumidity(data?.current?.humidity);
       setSpeed(data?.current?.wind_kph);
@@ -79,13 +89,20 @@ function App() {
             image={
               <FontAwesomeIcon icon={faTemperatureThreeQuarters} size="5x" />
             }
-            Value1={`Temperature: ${temp}`}
-            Value2={`Minimum: ${minTemp}`}
-            Value3={`Maximum: ${maxTemp}`}
+            Value1={`Temperature(c): ${temp}`}
+            Value2={`Feels Like (c): ${minTemp}`}
+            Value3={`Updated : ${lastUpdated}`}
             Value4={`pressure: ${pressure}`}
             Value5={`humidity:${humidity}`}
           />
-          <Hero Image={image} />
+          <Hero
+            Image={image}
+            Value1={condition}
+            Value2={`Country: ${country}`}
+            Value3={`Region: ${region}`}
+            Value4={`Local Time: ${localTime}`}
+            Value5={`Time Zone:${timezone}`}
+          />
           <Card
             image={<FontAwesomeIcon icon={faWind} size="5x" />}
             Value1={`Speed: ${speed}`}
